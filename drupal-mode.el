@@ -9,6 +9,7 @@
 
 ;;; Code:
 
+;; source: http://drupal.org/node/59868
 (defconst drupal-php-style
   '((c-offsets-alist . ((case-label . +)
                         (arglist-intro . +) ; for FAPI arrays and DBTNG
@@ -21,10 +22,10 @@
   php-mode "Drupal"
   "Major mode for working with Drupal.
 \\{drupal-mode-map}"
+  (c-set-style "drupal-php-style")
   (set 'tab-width 2)
   (set 'c-basic-offset 2)
-  (set 'indent-tabs-mode nil)
-  (c-set-style "drupal-php-style"))
+  (set 'indent-tabs-mode nil))
 
 (c-add-style "drupal-php-style" drupal-php-style)
 
