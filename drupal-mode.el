@@ -18,6 +18,11 @@
                         )))
   "Drupal coding standard.")
 
+;; based on sacha chua's idea
+(defun drupal-module-name ()
+  "Return the Drupal module name for .module and .install files."
+  (file-name-sans-extension (file-name-nondirectory (buffer-file-name))))
+
 (define-derived-mode drupal-mode
   php-mode "Drupal"
   "Major mode for working with Drupal.
