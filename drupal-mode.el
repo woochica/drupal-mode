@@ -17,6 +17,7 @@
 
 (defcustom drupal-api-url "http://api.drupal.org/"
   "Drupal API URL."
+  :type 'string
   :group 'drupal)
 
 (defcustom drupal-hook-docstring
@@ -24,6 +25,7 @@
  * Implements %s()
  */"
   "Documentation string for hook."
+  :type 'string
   :group 'drupal)
 
 ;; source: http://drupal.org/node/59868
