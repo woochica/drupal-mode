@@ -38,6 +38,12 @@
   "Drupal coding style."
   :group 'drupal)
 
+(defcustom drupal-api-buffer-name
+  "*drupal-api*"
+  "Buffer name for temporary API lookup."
+  :type 'string
+  :group 'drupal)
+
 (defun drupal-hook-implement (hook-name)
   "Insert API code for HOOK-NAME at point."
   (interactive (list (read-string "Hook name: ")))
@@ -45,7 +51,7 @@
         (docstring (format drupal-hook-docstring hook-name))
         (url (concat drupal-api-url hook-name)))
     (insert
-     (concat docstring (with-current-buffer (get-buffer-create "*drupal-api*")
+     (concat docstring (with-current-buffer (get-buffer-create drupal-api-buffer-name)
                          (if (w3m-process-with-wait-handler
                                (w3m-retrieve-and-render url nil nil nil nil handler))
                              (let* ((beg (search-forward "<?php" nil t))
