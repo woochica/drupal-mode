@@ -11,6 +11,17 @@
 
 (require 'w3m)
 
+(defvar drupal-project-directory nil
+  "Root directory of Drupal project.")
+
+(defun drupal-project-initialize ()
+  "Initialize Drupal project."
+  (interactive)
+  (if (not drupal-project-directory)
+      (let ((dir (read-directory-name "Project root: ")))
+        (set (make-local-variable 'drupal-project-directory) dir))
+    drupal-project-directory))
+
 (defvar drupal-api-url "http://api.drupal.org/"
   "Drupal API URL.")
 
@@ -23,7 +34,7 @@
   )
 
 (defun drupal-hook-implement (hook-name)
-  "Inserts API code for HOOK-NAME at point."
+  "Insert API code for HOOK-NAME at point."
   (interactive (list (read-string "Hook name: ")))
   (let ((module-name (drupal-module-name))
         (docstring (format drupal-hook-docstring hook-name))
